@@ -37,22 +37,34 @@ def _create_job_record(db: Session, job_id: str, filename: str, total_files: int
     return job
 
 
-def _serialize_job(job: Job | dict[str, str]) -> dict[str, str | int]:
+def _read_job_text(job_uuid: str, filename: str) -> str | None:
+    text_path = settings.jobs_dir / job_uuid / "output" / f"{Path(filename).stem}.txt"
+    if not text_path.exists():
+        return None
+    return text_path.read_text(encoding="utf-8")
+
+
+def _serialize_job(job: Job | dict[str, str]) -> dict[str, str | int | None]:
     if isinstance(job, dict):
-        return {
-            "uuid": job["uuid"],
-            "filename": job["filename"],
-            "status": job.get("status", "queued"),
+        uuid, filename, status = job["uuid"], job["filename"], job.get("status", "queued")
+        base = {
+            "uuid": uuid,
+            "filename": filename,
+            "status": status,
             "progress": job.get("progress", 0),
             "total": job.get("total", 1),
         }
-    return {
-        "uuid": job.uuid,
-        "filename": job.filename,
-        "status": job.status,
-        "progress": job.progress,
-        "total": job.total,
-    }
+    else:
+        uuid, filename, status = job.uuid, job.filename, job.status
+        base = {
+            "uuid": uuid,
+            "filename": filename,
+            "status": status,
+            "progress": job.progress,
+            "total": job.total,
+        }
+    base["text"] = _read_job_text(uuid, filename) if status == "completed" else None
+    return base
 
 
 @router.get("/", response_class=HTMLResponse)

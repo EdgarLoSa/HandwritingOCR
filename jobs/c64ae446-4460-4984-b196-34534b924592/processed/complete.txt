@@ -1,0 +1,5 @@
+Engine: ollama
+Best variant: ollama
+Confidence: 100.00
+Text file: sample.txt
+Docx file: sample.docx

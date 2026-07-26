@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusNode = card.querySelector("[data-job-status]");
     const progressNode = card.querySelector("[data-job-progress]");
     const totalNode = card.querySelector("[data-job-total]");
+    const textNode = card.querySelector("[data-job-text]");
 
     const refresh = async () => {
       try {
@@ -35,12 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
         statusNode.textContent = job.status;
         progressNode.textContent = job.progress;
         totalNode.textContent = job.total;
+        if (job.text) {
+          textNode.textContent = job.text;
+          textNode.hidden = false;
+        }
+        if (job.status === "completed" || job.status === "failed") {
+          clearInterval(timer);
+        }
       } catch (error) {
         console.error(error);
       }
     };
 
+    const timer = setInterval(refresh, 3000);
     refresh();
-    setInterval(refresh, 3000);
   });
 });

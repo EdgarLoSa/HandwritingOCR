@@ -18,6 +18,7 @@
           <div>UUID: {{ job.uuid }}</div>
           <div>Status: <span data-job-status>{{ job.status }}</span></div>
           <div>Progress: <span data-job-progress>{{ job.progress }}</span>/<span data-job-total>{{ job.total }}</span></div>
+          <pre class="job-text" data-job-text{% if not job.text %} hidden{% endif %}>{{ job.text or "" }}</pre>
         </article>
         {% endfor %}
       </div>

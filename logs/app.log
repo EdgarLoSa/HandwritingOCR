@@ -30,3 +30,6 @@ Traceback (most recent call last):
   File "D:\handwrittingOCR\app\queue\worker.py", line 71, in _process_job
     raise RuntimeError("Tesseract produced no text.")
 RuntimeError: Tesseract produced no text.
+2026-07-26 11:30:37,595 INFO httpx HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-26 11:42:17,987 INFO app.queue.worker OCR worker started
+2026-07-26 11:43:07,775 INFO httpx HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
