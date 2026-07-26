@@ -17,3 +17,5 @@ python-docx
 aiofiles
 
 tqdm
+
+openai

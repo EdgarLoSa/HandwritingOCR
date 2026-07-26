@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OCR Progress</title>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="card">
+      <h1>Job progress</h1>
+      <p class="subtitle">{{ message }}</p>
+      <div class="job-list">
+        {% for job in jobs %}
+        <article class="job-item" data-job-card data-job-uuid="{{ job.uuid }}">
+          <strong>{{ job.filename }}</strong>
+          <div>UUID: {{ job.uuid }}</div>
+          <div>Status: <span data-job-status>{{ job.status }}</span></div>
+          <div>Progress: <span data-job-progress>{{ job.progress }}</span>/<span data-job-total>{{ job.total }}</span></div>
+        </article>
+        {% endfor %}
+      </div>
+      <a class="button" href="/">Back to upload</a>
+    </section>
+  </main>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

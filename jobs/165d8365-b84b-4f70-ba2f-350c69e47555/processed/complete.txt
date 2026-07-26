@@ -1,0 +1,5 @@
+Engine: ollama
+Best variant: ollama
+Confidence: 100.00
+Text file: WhatsApp Image 2026-07-17 at 13.02.29.txt
+Docx file: WhatsApp Image 2026-07-17 at 13.02.29.docx

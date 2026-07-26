@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handwriting OCR</title>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel">
+        <div class="badge">Handwriting OCR workspace</div>
+        <h1>Build the full OCR pipeline in one repository.</h1>
+        <p>
+          This starter keeps uploads, job metadata, and future OCR processing in sync so we can
+          iterate module by module without losing the thread.
+        </p>
+
+        {% if message %}
+        <div class="status">{{ message }}</div>
+        {% endif %}
+
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+          <input type="text" name="title" placeholder="Job title, optional">
+          <label class="dropzone" data-dropzone>
+            <input id="files" type="file" name="files" accept=".jpg,.jpeg,.png,.bmp,.tiff,.webp" multiple required>
+            <span class="dropzone-title">Drag and drop images here</span>
+            <span class="dropzone-subtitle">or click to select multiple files</span>
+          </label>
+          <button type="submit">Create OCR jobs</button>
+        </form>
+      </div>
+
+      <aside class="panel meta">
+        <div><strong>Current file:</strong> app.py</div>
+        <div><strong>Saved job:</strong> jobs/uploaded / jobs/output / jobs/processed</div>
+        <div><strong>Database:</strong> database/ocr.sqlite</div>
+        {% if job_uuid %}
+        <div><strong>Job UUID:</strong> {{ job_uuid }}</div>
+        {% endif %}
+        <div><strong>Uploads:</strong> Multiple files supported</div>
+      </aside>
+    </section>
+  </main>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

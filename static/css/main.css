@@ -1,0 +1,101 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Segoe UI, Arial, sans-serif;
+  background: linear-gradient(160deg, #0a0f1f, #121a33);
+  color: #f5f7ff;
+}
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+.card {
+  background: rgba(14, 19, 39, 0.86);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 24px;
+}
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+.hero {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: start;
+}
+.panel {
+  background: rgba(14, 19, 39, 0.86);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 24px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(125, 211, 252, 0.14);
+  color: #7dd3fc;
+}
+.subtitle { color: #aeb7d9; }
+.job-list { display: grid; gap: 12px; margin: 18px 0; }
+.job-item {
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 14px;
+}
+.button {
+  display: inline-block;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+  color: #06101f;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.upload-form { display: grid; gap: 14px; margin-top: 18px; }
+input[type="text"], input[type="file"] {
+  width: 100%;
+  color: #f5f7ff;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.dropzone {
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  justify-items: center;
+  min-height: 180px;
+  text-align: center;
+  border: 1.5px dashed rgba(125, 211, 252, 0.5);
+  border-radius: 18px;
+  background: rgba(125, 211, 252, 0.05);
+  cursor: pointer;
+  padding: 18px;
+}
+.dropzone input {
+  display: none;
+}
+.dropzone-title { font-weight: 700; font-size: 1.05rem; }
+.dropzone-subtitle { color: #aeb7d9; }
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #7dd3fc, #a78bfa);
+  color: #06101f;
+  font-weight: 700;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; }
+  .wrap { padding: 24px 14px; }
+}
